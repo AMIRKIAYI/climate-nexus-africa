@@ -1,5 +1,5 @@
 import React from 'react';
-import { FileText, Download, Eye, Calendar, ArrowRight } from 'lucide-react';
+import { Download, Eye, Calendar, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const ImpactReports: React.FC = () => {

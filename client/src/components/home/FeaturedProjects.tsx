@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Calendar, ArrowRight, Users, TreePine, Laptop } from 'lucide-react';
+import { MapPin, ArrowRight, Users, TreePine, Laptop } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const FeaturedProjects: React.FC = () => {

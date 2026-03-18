@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useInView } from 'react-intersection-observer';
 import CountUp from 'react-countup';
 import { School, Users, Map, TreePine, BookOpen, Heart, Globe, Target } from 'lucide-react';

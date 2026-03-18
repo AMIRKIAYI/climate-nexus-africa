@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, CheckCircle, Circle, ArrowRight } from 'lucide-react';
+import { CheckCircle, Circle, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Timeline: React.FC = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, Leaf, Map, BookOpen, Phone, Mail, Clock, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown, Leaf, Map, BookOpen, Phone, Mail, Clock } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
