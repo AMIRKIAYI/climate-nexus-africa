@@ -17,12 +17,13 @@ interface TeamMemberProps {
 const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
   return (
     <div className="group bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-      {/* Image Container */}
-      <div className="relative h-72 overflow-hidden">
+      {/* Image Container - Adjusted for passport photos */}
+      <div className="relative h-80 overflow-hidden bg-gray-100">
         <img
           src={member.image}
           alt={member.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+          className="w-full h-full object-contain object-center bg-gray-50 p-4"
+          style={{ objectPosition: 'center 30%' }} // Adjust this value to control vertical alignment
         />
         
         {/* Gradient Overlay */}
@@ -90,4 +91,3 @@ const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
 };
 
 export default TeamMember;
-
