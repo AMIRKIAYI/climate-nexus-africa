@@ -9,10 +9,10 @@ const FeaturedProjects: React.FC = () => {
       location: "Garissa County",
       year: "2023",
       description: "Empowered 25 schools with digital tools and comprehensive teacher training programs, reaching over 2,000 students.",
-      image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/activities/digit.png",
       activities: ["Teacher training workshops", "Digital equipment distribution", "Curriculum integration"],
       icon: Laptop,
-      color: "from-blue-400 to-cyan-400",
+      
       stats: [
         { label: "Schools", value: "25" },
         { label: "Teachers", value: "120" }
@@ -23,10 +23,10 @@ const FeaturedProjects: React.FC = () => {
       location: "Mombasa & Kilifi",
       year: "2023-2024",
       description: "Community-based adaptation and mangrove restoration project protecting coastlines and creating sustainable livelihoods.",
-      image: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      image: "/images/activities/mangrove.png",
       activities: ["Mangrove planting", "Community workshops", "GIS mapping"],
       icon: TreePine,
-      color: "from-emerald-400 to-teal-400",
+      // color: "from-emerald-400 to-teal-400",
       stats: [
         { label: "Trees", value: "5,000" },
         { label: "Communities", value: "8" }

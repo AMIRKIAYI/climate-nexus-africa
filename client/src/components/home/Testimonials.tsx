@@ -1,44 +1,62 @@
+
 import React, { useState, useEffect } from 'react';
 import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
 const Testimonials: React.FC = () => {
   const testimonials = [
     {
-      name: "Dr. Sarah Okonjo",
-      role: "Principal, Nairobi School",
+      name: "Fatima Hassan",
+      role: "Principal, Garissa Islamic Academy",
       content: "Climate Nexus Africa transformed our approach to environmental education. The GIS training opened new possibilities for our students, and we've seen a 40% increase in student engagement in climate-related subjects.",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
-      rating: 5,
-      location: "Nairobi"
-    },
-    {
-      name: "James Mwangi",
-      role: "Community Leader, Garissa",
-      content: "The tree planting initiative and community training has brought new hope to our region. We're seeing real environmental change, and our youth are now employed in environmental conservation projects.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      image: "https://randomuser.me/api/portraits/women/68.jpg",
       rating: 5,
       location: "Garissa"
     },
     {
-      name: "Prof. Amina Hassan",
+      name: "James Mwangi",
+      role: "Community Leader, Nairobi",
+      content: "The tree planting initiative and community training has brought new hope to our region. We're seeing real environmental change, and our youth are now employed in environmental conservation projects.",
+      image: "https://randomuser.me/api/portraits/men/32.jpg",
+      rating: 5,
+      location: "Nairobi"
+    },
+    {
+      name: "Dr. Sarah Okonjo",
       role: "Education Officer, Mombasa",
       content: "Their teacher training program is exceptional. Our educators are now equipped with modern digital skills for the 21st century. The GIS integration has made geography and environmental science come alive.",
-      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      image: "https://randomuser.me/api/portraits/women/45.jpg",
       rating: 5,
       location: "Mombasa"
     },
     {
-      name: "Peter Ochieng",
+      name: "Omar Abdallah",
       role: "Head of Programs, UNDP Kenya",
       content: "Climate Nexus Africa has been a valuable partner in implementing climate resilience programs. Their data-driven approach and community engagement model delivers measurable impact.",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      image: "https://randomuser.me/api/portraits/men/52.jpg",
       rating: 5,
       location: "Nairobi"
+    },
+    {
+      name: "Grace Wanjiku",
+      role: "Climate Advocate, Kisumu",
+      content: "The digital literacy program opened my eyes to new possibilities. Now I can track environmental data and present it to my community effectively. This is the future of climate action in Africa.",
+      image: "https://randomuser.me/api/portraits/women/89.jpg",
+      rating: 5,
+      location: "Kisumu"
+    },
+    {
+      name: "Mohamed Ali",
+      role: "County Official, Kilifi",
+      content: "The mangrove restoration project has brought life back to our coastline. This partnership with Climate Nexus Africa has created jobs and protected our community from coastal erosion.",
+      image: "https://images.unsplash.com/photo-1564564321837-a57b7070ac4f?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
+      rating: 5,
+      location: "Kilifi"
     }
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [imageErrors, setImageErrors] = useState<{ [key: number]: boolean }>({});
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -58,6 +76,10 @@ const Testimonials: React.FC = () => {
   const prev = () => {
     setIsAutoPlaying(false);
     setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const handleImageError = (index: number) => {
+    setImageErrors(prev => ({ ...prev, [index]: true }));
   };
 
   return (
@@ -92,12 +114,21 @@ const Testimonials: React.FC = () => {
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6 mb-8">
                 {/* Image */}
                 <div className="relative">
-                  <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-emerald-100">
-                    <img
-                      src={testimonials[currentIndex].image}
-                      alt={testimonials[currentIndex].name}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="w-24 h-24 rounded-full overflow-hidden ring-4 ring-emerald-100 bg-emerald-50 flex items-center justify-center">
+                    {imageErrors[currentIndex] ? (
+                      <div className="w-full h-full bg-emerald-100 flex items-center justify-center">
+                        <span className="text-emerald-600 font-bold text-2xl">
+                          {testimonials[currentIndex].name.charAt(0)}
+                        </span>
+                      </div>
+                    ) : (
+                      <img
+                        src={testimonials[currentIndex].image}
+                        alt={testimonials[currentIndex].name}
+                        className="w-full h-full object-cover"
+                        onError={() => handleImageError(currentIndex)}
+                      />
+                    )}
                   </div>
                   <div className="absolute -bottom-2 -right-2 bg-emerald-500 rounded-full p-1">
                     <Quote size={12} className="text-white" />
