@@ -1,5 +1,5 @@
 import React from 'react';
-import { Users, Award, Globe, Heart } from 'lucide-react';
+import { Users, Camera } from 'lucide-react';
 
 const TeamHero: React.FC = () => {
   return (
@@ -11,48 +11,39 @@ const TeamHero: React.FC = () => {
       </div>
 
       <div className="container-custom relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          {/* Badge */}
+        {/* Badge */}
+        <div className="text-center mb-8">
           <div className="inline-flex items-center space-x-2 bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold mb-6">
             <Users size={16} />
-            <span>OUR LEADERSHIP TEAM</span>
+            <span>OUR TEAM</span>
           </div>
-
-          {/* Heading */}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
-            Meet the Minds Behind
+            Meet the Team Behind
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-teal-600 block mt-2">
               Climate Nexus Africa
             </span>
           </h1>
+        </div>
 
-          {/* Description */}
-          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto">
-            A dedicated team of experts committed to driving climate innovation, 
-            digital transformation, and sustainable development across Kenya and Africa.
-          </p>
-
-          {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 max-w-3xl mx-auto">
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <Award className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">15+</div>
-              <div className="text-xs text-gray-600">Years Experience</div>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <Users className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">9</div>
-              <div className="text-xs text-gray-600">Team Members</div>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <Globe className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">8</div>
-              <div className="text-xs text-gray-600">Counties</div>
-            </div>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 shadow-lg">
-              <Heart className="w-6 h-6 text-emerald-600 mx-auto mb-2" />
-              <div className="text-2xl font-bold text-gray-900">100+</div>
-              <div className="text-xs text-gray-600">Communities</div>
+        {/* Group Photo - 80% width from edges */}
+        <div className="w-[80%] mx-auto mt-8">
+          <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+            <img 
+              src="/images/team/group.png" 
+              alt="Climate Nexus Africa Team Group Photo"
+              className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+              onError={(e) => {
+                e.currentTarget.src = "https://placehold.co/1200x600/0f766e/white?text=Climate+Nexus+Africa+Team+Photo";
+              }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/60 via-transparent to-transparent"></div>
+            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-white">
+              <div className="flex items-center space-x-2 mb-2">
+                <Camera size={20} className="text-emerald-300" />
+                <span className="text-sm uppercase tracking-wider">Our Team</span>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold">Climate Nexus Africa</h3>
+              <p className="text-sm md:text-base text-gray-200">Dedicated to climate innovation and digital transformation across Kenya</p>
             </div>
           </div>
         </div>

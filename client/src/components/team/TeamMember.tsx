@@ -1,7 +1,8 @@
+
 import React from 'react';
 import { Linkedin, Mail, MapPin } from 'lucide-react';
 
-interface TeamMemberProps {
+export interface TeamMemberProps {
   member: {
     name: string;
     title: string;
@@ -23,7 +24,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
           src={member.image}
           alt={member.name}
           className="w-full h-full object-contain object-center bg-gray-50 p-4"
-          style={{ objectPosition: 'center 30%' }} // Adjust this value to control vertical alignment
+          style={{ objectPosition: 'center 30%' }}
         />
         
         {/* Gradient Overlay */}
@@ -73,7 +74,7 @@ const TeamMember: React.FC<TeamMemberProps> = ({ member }) => {
         </p>
 
         {/* Expertise Tags */}
-        {member.expertise && (
+        {member.expertise && member.expertise.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-3">
             {member.expertise.map((skill, idx) => (
               <span
