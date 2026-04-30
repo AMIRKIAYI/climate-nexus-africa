@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, Leaf, Map, BookOpen, Phone, Mail, Clock } from 'lucide-react';
@@ -48,6 +49,14 @@ const Navbar: React.FC = () => {
     { name: 'Community', path: '/community' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  // Handle Partner With Us click - navigates to contact with partnership subject
+  const handlePartnerClick = () => {
+    // Store the partnership intent in sessionStorage
+    sessionStorage.setItem('contactSubject', 'Partnership');
+    // Navigate to contact page
+    window.location.href = '/contact';
+  };
 
   return (
     <>
@@ -120,8 +129,8 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Spacer divs to prevent content from hiding under fixed elements */}
-      <div className="h-8 sm:h-10"></div> {/* Space for top bar */}
-      <div className="h-16 sm:h-20"></div> {/* Space for navbar */}
+      <div className="h-8 sm:h-10"></div>
+      <div className="h-16 sm:h-20"></div>
       
       <nav className={`fixed top-8 sm:top-10 left-0 right-0 z-40 transition-all duration-300 ${
         scrolled 
@@ -130,9 +139,8 @@ const Navbar: React.FC = () => {
       }`}>
         <div className="container-custom">
           <div className="flex justify-between items-center">
-            {/* Logo - Updated with solid lines around AFRICA */}
+            {/* Logo */}
             <Link to="/" className="flex items-center group">
-              {/* Logo Image */}
               <div className="relative mr-1">
                 <img 
                   src="/images/Nexus-logo.png" 
@@ -141,14 +149,12 @@ const Navbar: React.FC = () => {
                 />
               </div>
               
-              {/* Text with lines around AFRICA */}
               <div className="flex flex-col">
                 <span className="font-display font-bold text-sm sm:text-base md:text-xl text-gray-800 leading-tight">
                   CLIMATE <span className="hidden xs:inline">NEXUS</span>
                   <span className="xs:hidden">NEX</span>
                 </span>
                 
-                {/* AFRICA with smooth solid lines */}
                 <div className="flex items-center space-x-1 sm:space-x-2 md:space-x-3 text-emerald-600 font-medium">
                   <div className="w-4 sm:w-6 md:w-8 h-[2px] bg-emerald-600 rounded-full"></div>
                   <span className="text-[10px] sm:text-xs md:text-sm tracking-wider">AFRICA</span>
@@ -177,7 +183,6 @@ const Navbar: React.FC = () => {
                         <ChevronDown size={14} className={`transition-transform duration-300 ${activeDropdown === link.name ? 'rotate-180' : ''}`} />
                       </button>
                       
-                      {/* Dropdown Menu */}
                       {activeDropdown === link.name && (
                         <div className="absolute top-full left-0 mt-2 w-56 xl:w-64 bg-white rounded-xl shadow-xl border border-gray-100 py-2 animate-fadeIn">
                           {link.dropdown.map((item) => {
@@ -209,15 +214,16 @@ const Navbar: React.FC = () => {
                 </div>
               ))}
               
-              <Link
-                to="/contact"
-                className="ml-2 xl:ml-4 relative group overflow-hidden rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 p-[2px] hover:from-emerald-500 hover:to-teal-500 transition-all duration-300"
+              {/* Partner With Us Button - Now using button with onClick */}
+              <button
+                onClick={handlePartnerClick}
+                className="ml-2 xl:ml-4 relative group overflow-hidden rounded-lg bg-gradient-to-r from-emerald-600 to-teal-600 p-[2px] hover:from-emerald-500 hover:to-teal-500 transition-all duration-300 cursor-pointer"
               >
                 <div className="relative flex items-center space-x-2 rounded-lg bg-white px-4 xl:px-6 py-1.5 xl:py-2 text-gray-800 text-sm xl:text-base transition-all duration-300 group-hover:bg-transparent group-hover:text-white">
                   <span className="font-semibold">Partner</span>
                   <span className="hidden xl:inline">With Us</span>
                 </div>
-              </Link>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -274,19 +280,20 @@ const Navbar: React.FC = () => {
                 </div>
               ))}
               
-              <Link
-                to="/contact"
-                className="block mt-3 sm:mt-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:from-emerald-500 hover:to-teal-500 transition-all"
-                onClick={() => setIsOpen(false)}
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  handlePartnerClick();
+                }}
+                className="block w-full mt-3 sm:mt-4 bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-center px-4 py-2 sm:py-3 rounded-lg text-sm sm:text-base font-semibold hover:from-emerald-500 hover:to-teal-500 transition-all"
               >
                 Partner With Us
-              </Link>
+              </button>
             </div>
           </div>
         </div>
       </nav>
 
-      {/* Add animation styles */}
       <style>{`
         @keyframes fadeIn {
           from {
@@ -303,7 +310,6 @@ const Navbar: React.FC = () => {
           animation: fadeIn 0.2s ease-out forwards;
         }
         
-        /* Custom breakpoint for extra small devices */
         @media (min-width: 480px) {
           .xs\\:inline {
             display: inline;
